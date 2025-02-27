@@ -1,4 +1,5 @@
-"use client"; // Mark as client component
+// app/rootLayout.tsx (Client Component)
+"use client";
 
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -15,11 +16,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -29,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {isClient && (
+        {isClient ? (
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -38,7 +35,7 @@ export default function RootLayout({
           >
             {children}
           </ThemeProvider>
-        )}
+        ) : null}
       </body>
     </html>
   );
