@@ -1,7 +1,6 @@
-// app/layout.tsx (Server Component)
 import type { Metadata } from "next";
-import RootLayout from "./rootLayout"; // Client component
-import { ConvexClientProvider } from "../providers/convex_client_provider"; // Client component
+import RootLayout from "./rootLayout";
+import { ConvexClientProvider } from "../providers/convex_client_provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -10,8 +9,12 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <ConvexClientProvider>
-      <RootLayout>{children}</RootLayout>
-    </ConvexClientProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className="antialiased">
+        <ConvexClientProvider>
+          <RootLayout>{children}</RootLayout>
+        </ConvexClientProvider>
+      </body>
+    </html>
   );
 }

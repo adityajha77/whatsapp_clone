@@ -1,9 +1,8 @@
-// src/components/home/left-panel.tsx
-
 "use client";
 
 import { useEffect, useState } from "react";
-import { ListFilter, LogOut, MessageSquareDiff, Search, User } from "lucide-react";
+import UserProfileButton from "../ui/user-button"; // ✅ Updated import
+import { ListFilter, MessageSquareDiff, Search } from "lucide-react";
 import { Input } from "../ui/input";
 import ThemeSwitch from "./theme-switch";
 import Conversation from "./conversation";
@@ -22,11 +21,10 @@ const LeftPanel = () => {
       <div className='sticky top-0 bg-left-panel z-10'>
         {/* Header */}
         <div className='flex justify-between bg-gray-primary p-3 items-center'>
-          <User size={24} />
+          <UserProfileButton /> {/* ✅ Updated to use Clerk's UserButton */}
           <div className='flex items-center gap-3'>
             <MessageSquareDiff size={20} />
             <ThemeSwitch />
-            <LogOut size={20} className='cursor-pointer' />
           </div>
         </div>
 
